@@ -21,7 +21,8 @@ public interface ProductService {
     Page<ProductDto> searchProducts(int pageNo, String keyword);
 
 
-    // Customer
 
+    // Customer
+    Product getProductById(Long id);
     List<Product> getAllProducts();
 }

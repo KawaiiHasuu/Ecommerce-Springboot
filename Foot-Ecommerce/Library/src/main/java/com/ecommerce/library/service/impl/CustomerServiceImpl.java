@@ -6,9 +6,11 @@ import com.ecommerce.library.repository.CustomerRepository;
 import com.ecommerce.library.repository.RoleRepository;
 import com.ecommerce.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -27,6 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setRoles(Arrays.asList(repository.findByName("CUSTOMER")));
         Customer customerSave = customerRepository.save(customer);
         return mapperDTO(customerSave);
+    }
+
+    @Override
+    public Customer findByUsername(String username) {
+        return customerRepository.findByUsername(username);
     }
 
     private CustomerDto mapperDTO(Customer customer){

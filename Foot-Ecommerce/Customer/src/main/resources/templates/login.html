@@ -28,6 +28,8 @@
 </head>
 
 <body>
+    <div th:replace="fragments::main-top">
+    </div>
     <!-- Start Main Top -->
 
     <!-- End Main Top -->
@@ -48,21 +50,24 @@
 
     <!-- End All Title Box -->
 
-    <section id="login-form">
+    <section id="login-form" class="text-center">
         <div class="noi-dung">
             <div class="form">
                 <h2>Log In</h2>
-                <form action="">
+                <div th:if="${param.error}" class="text-center alert alert-warning">
+                    <p>Sai tên tài khoản hoặc mật khẩu</p>
+                </div>
+                <div th:if="${param.logout}" class="text-center alert alert-success">
+                    <p>Bạn đã đăng xuất</p>
+                </div>
+                <form th:action="@{/do-login}" method="post">
                     <div class="input-form">
                         <!-- <span>User name</span> -->
-                        <input type="text" placeholder="Name" name="">
+                        <input type="text" placeholder="Name" name="username">
                     </div>
                     <div class="input-form">
                         <!-- <span>Password</span> -->
-                        <input type="password" placeholder="Password" name="">
-                    </div>
-                    <div class="Remember-me">
-                        <label><input type="checkbox" name=""> Remember Me </label>
+                        <input type="password" placeholder="Password" name="password">
                     </div>
                     <div class="input-form">
                         <input type="submit" value="Log In">

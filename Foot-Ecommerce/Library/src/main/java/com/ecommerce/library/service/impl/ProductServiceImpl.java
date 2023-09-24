@@ -148,6 +148,10 @@ public class ProductServiceImpl implements ProductService {
         return products;
     }
 
+    @Override
+    public Product getProductById(Long id) {
+        return productRepository.getById(id);
+    }
 
 
     private List<ProductDto> transfer(List<Product> products){
